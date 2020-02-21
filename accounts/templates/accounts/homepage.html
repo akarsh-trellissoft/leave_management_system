@@ -1,0 +1,79 @@
+{% load staticfiles %}
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <title>Welcome</title>
+        <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+        <script src="https://kit.fontawesome.com/aa09fdd343.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <canvas id="canvas"></canvas>
+        {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}" class="logout_button">Logout</a>
+        {% endif %}
+        {% if user_admin %}
+        <div class="container">
+            <div class="box">
+                <div class="title">
+                    <span class="block"></span>
+                    <h1>ADMIN LOGIN<span></span></h1>
+                </div>
+                <div class="role">
+                    <div class="block"></div>
+                    <p>You have all the previlidges.</p>
+                </div>
+            </div>
+        </div>
+        <div class="links">
+            <a href="#" class="btn btn-white btn-animate">Add</a>
+            <a href="#" class="btn btn-white btn-animate">Modify</a>
+            <a href="#" class="btn btn-white btn-animate">Delete</a>
+            <a href="#" class="btn btn-white btn-animate">Manage</a>
+        </div>
+        {% endif %}
+
+        {% if user_manager %}
+        <div class="container">
+            <div class="box">
+                <div class="title">
+                    <span class="block"></span>
+                    <h1>MANAGER LOGIN<span></span></h1>
+                </div>
+                <div class="role">
+                    <div class="block"></div>
+                    <p>You are the manager.</p>
+                </div>
+            </div>
+        </div>
+        <div class="links">
+            <a href="#" class="btn btn-white btn-animate">Accept</a>
+            <a href="#" class="btn btn-white btn-animate">Reject</a>
+            <a href="#" class="btn btn-white btn-animate">Status</a>
+        </div>
+        {% endif %}
+
+        {% if user_employee %}
+        <div class="container">
+            <div class="box">
+                <div class="title">
+                    <span class="block"></span>
+                    <h1>EMPLOYEE LOGIN<span></span></h1>
+                </div>
+                <div class="role">
+                    <div class="block"></div>
+                    <p>You are a valuable assest to the company.</p>
+                </div>
+            </div>
+        </div>
+        <div class="links">
+            <a href="{% url 'apply_leave' %}" class="btn btn-white btn-animate">Apply Leave</a>
+            <a href="#" class="btn btn-white btn-animate">Calender</a>
+            <a href="#" class="btn btn-white btn-animate">Salary</a>
+            <a href="#" class="btn btn-white btn-animate">Info</a>
+        </div>
+        {% endif %}
+        <script src="{% static 'js/homepage.js' %}"></script>
+    </body>
+</html>
